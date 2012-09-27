@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+		
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<div>
+						<h:outputLabel value="#{messages['entrada.label.data_inicio']}" />
+						:
+						<p:calendar
+							id="dataInicio" 
+							value="#{entradaListMB.dataInicioFiltro}"
+							required="true" pattern="dd/MM/yyyy HH:mm:ss"
+							showOn="button"
+							mindate="#{entradaListMB.minimoDataFiltro}" />
+						<p:message for="dataInicio" />
+					</div>
+
+					<div>
+						<h:outputLabel value="#{messages['entrada.label.data_fim']}" />
+						:
+						<p:calendar
+							id="dataFim" 
+							value="#{entradaListMB.dataFimFiltro}"
+							required="true" pattern="dd/MM/yyyy HH:mm:ss"
+							showOn="button" />
+						<p:message for="dataFim" />
+					</div>
+					
+					<p:commandButton value="Filtrar" update="list" action="#{entradaListMB.filtrarEntradas()}" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable id="list" var="bean"
+				value="#{entradaListMB.listaEntradas}">
+				<f:facet name="header">#{messages['entrada.list.table.title']}</f:facet>
+				<p:column style="width:5%;" sortBy="#{bean.codigoTransacaoE}">
+					<f:facet name="header">#{messages['entrada.label.codigo_transacao']}</f:facet>
+					<h:outputText value="#{bean.codigoTransacaoE}" />
+				</p:column>
+				<p:column sortBy="#{bean.nomeServicoE}">
+					<f:facet name="header">#{messages['entrada.label.nome_servico']}</f:facet>
+					<h:outputText value="#{bean.nomeServicoE}" />
+				</p:column>
+				<p:column sortBy="#{bean.dataHoraRegistroE}">
+					<f:facet name="header">#{messages['entrada.label.data_hora_registro']}</f:facet>
+					<h:outputFormat value="#{bean.dataHoraRegistroE}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
