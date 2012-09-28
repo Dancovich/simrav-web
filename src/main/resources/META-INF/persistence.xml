@@ -5,7 +5,7 @@
 	<persistence-unit name="simravweb-ds" transaction-type="JTA">
 		<jta-data-source>java:/SimravWebDS</jta-data-source>
 
-		<class>br.gov.serpro.simrav.simravweb.domain.Bookmark</class>
+		<class>br.gov.serpro.simrav.simravweb.domain.BookmarkDTO</class>
 
 		<properties>
 			<property name="connection.autocommit" value="false"/>

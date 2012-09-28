@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The Hypersonic embedded database JCA connection factory config -->
+
+<!-- See http://www.jboss.org/community/wiki/Multiple1PC for information about local-tx-datasource -->
+<!-- $Id: hsqldb-ds.xml 111778 2011-07-18 16:39:41Z alesj $ -->
+
+<datasources>
+   <!--
+   <local-tx-datasource>
+
+      <jndi-name>SimravWebLocalDS</jndi-name>
+      <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+      <connection-url>jdbc:oracle:thin:@10.200.144.165:1560:BDDES060</connection-url>
+      <user-name>srav</user-name>
+      <password>apppro009</password>
+      <min-pool-size>5</min-pool-size>
+      <max-pool-size>20</max-pool-size>
+      <idle-timeout-minutes>0</idle-timeout-minutes>
+   </local-tx-datasource>
+   -->
+
+   <xa-datasource>
+      <jndi-name>SimravWebDS</jndi-name>
+      <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+      <xa-datasource-property name="URL">jdbc:oracle:thin:@10.200.144.165:1560:BDDES060</xa-datasource-property>
+      <xa-datasource-property name="User">srav</xa-datasource-property> 
+      <xa-datasource-property name="Password">apppro009</xa-datasource-property>
+      <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+   </xa-datasource>
+
+</datasources>

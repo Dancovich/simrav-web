@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<policy>
+	<application-policy name="simravweb">
+		<authentication>
+			<login-module
+				code="br.gov.component.demoiselle.security.auth.provider.ProviderLoginModule"
+				flag="sufficient">
+				<module-option name="credential-type">user_password</module-option>
+				<module-option name="authentication-provider-class">br.gov.component.demoiselle.security.auth.provider.implementation.SampleAuthenticationProvider
+				</module-option>
+				<module-option name="authorization-provider-class">br.gov.component.demoiselle.security.auth.provider.implementation.SampleAuthorizationProvider
+				</module-option>
+				<module-option name="throwable-handler-class">br.gov.component.demoiselle.security.auth.message.implementation.RequestThrowableHandler
+				</module-option>
+			</login-module>
+		</authentication>
+	</application-policy>
+</policy>

@@ -8,11 +8,11 @@ import br.gov.frameworkdemoiselle.template.AbstractEditPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 import br.gov.serpro.simrav.simravweb.business.BookmarkBC;
-import br.gov.serpro.simrav.simravweb.domain.Bookmark;
+import br.gov.serpro.simrav.simravweb.domain.BookmarkDTO;
 
 @ViewController
 @PreviousView("/bookmark_list.xhtml")
-public class BookmarkEditMB extends AbstractEditPageBean<Bookmark, Long> {
+public class BookmarkEditMB extends AbstractEditPageBean<BookmarkDTO, Long> {
 
 	private static final long serialVersionUID = 1L;
 

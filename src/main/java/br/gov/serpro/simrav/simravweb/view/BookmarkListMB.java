@@ -12,12 +12,12 @@ import br.gov.frameworkdemoiselle.template.AbstractListPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 import br.gov.serpro.simrav.simravweb.business.BookmarkBC;
-import br.gov.serpro.simrav.simravweb.domain.Bookmark;
+import br.gov.serpro.simrav.simravweb.domain.BookmarkDTO;
 
 @ViewController
 @NextView("/bookmark_edit.xhtml")
 @PreviousView("/bookmark_list.xhtml")
-public class BookmarkListMB extends AbstractListPageBean<Bookmark, Long> {
+public class BookmarkListMB extends AbstractListPageBean<BookmarkDTO, Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +25,7 @@ public class BookmarkListMB extends AbstractListPageBean<Bookmark, Long> {
 	private BookmarkBC bc;
 
 	@Override
-	protected List<Bookmark> handleResultList() {
+	protected List<BookmarkDTO> handleResultList() {
 		return this.bc.findAll();
 	}
 

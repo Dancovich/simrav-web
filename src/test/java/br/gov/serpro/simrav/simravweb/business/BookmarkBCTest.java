@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
-import br.gov.serpro.simrav.simravweb.domain.Bookmark;
+import br.gov.serpro.simrav.simravweb.domain.BookmarkDTO;
 
 @RunWith(DemoiselleRunner.class)
 public class BookmarkBCTest {
@@ -22,7 +22,7 @@ public class BookmarkBCTest {
 	
 	@Before
 	public void before() {
-		for (Bookmark bookmark : bookmarkBC.findAll()) {
+		for (BookmarkDTO bookmark : bookmarkBC.findAll()) {
 			bookmarkBC.delete(bookmark.getId());
 		}
 	}
@@ -30,26 +30,26 @@ public class BookmarkBCTest {
 	@Test
 	public void testLoad() {
 		bookmarkBC.load();
-		List<Bookmark> listaBookmarks = bookmarkBC.findAll();
+		List<BookmarkDTO> listaBookmarks = bookmarkBC.findAll();
 		assertNotNull(listaBookmarks);
 		assertEquals(10, listaBookmarks.size());
 	}
 	
 	@Test
 	public void testInsert() {
-		Bookmark bookmark = new Bookmark("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
+		BookmarkDTO bookmark = new BookmarkDTO("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
 		bookmarkBC.insert(bookmark);
-		List<Bookmark> listaBookmarks = bookmarkBC.findAll();
+		List<BookmarkDTO> listaBookmarks = bookmarkBC.findAll();
 		assertNotNull(listaBookmarks);
 		assertEquals(1, listaBookmarks.size());
 	}
 	
 	@Test
 	public void testDelete() {
-		Bookmark bookmark = new Bookmark("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
+		BookmarkDTO bookmark = new BookmarkDTO("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
 		bookmarkBC.insert(bookmark);
 		
-		List<Bookmark> listaBookmarks = bookmarkBC.findAll();
+		List<BookmarkDTO> listaBookmarks = bookmarkBC.findAll();
 		assertNotNull(listaBookmarks);
 		assertEquals(1, listaBookmarks.size());
 		
@@ -59,11 +59,11 @@ public class BookmarkBCTest {
 	}
 	@Test
 	public void testUpdate() {
-		Bookmark bookmark = new Bookmark("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
+		BookmarkDTO bookmark = new BookmarkDTO("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br");
 		bookmarkBC.insert(bookmark);
 		
-		List<Bookmark> listaBookmarks = bookmarkBC.findAll();
-		Bookmark bookmark2 = (Bookmark)listaBookmarks.get(0);
+		List<BookmarkDTO> listaBookmarks = bookmarkBC.findAll();
+		BookmarkDTO bookmark2 = (BookmarkDTO)listaBookmarks.get(0);
 		assertNotNull(listaBookmarks);
 		assertEquals("Demoiselle Portal", bookmark2.getDescription());
 		
@@ -71,7 +71,7 @@ public class BookmarkBCTest {
 		bookmarkBC.update(bookmark2);
 		
 		listaBookmarks = bookmarkBC.findAll();
-		Bookmark bookmark3 = (Bookmark)listaBookmarks.get(0);
+		BookmarkDTO bookmark3 = (BookmarkDTO)listaBookmarks.get(0);
 		assertEquals("Demoiselle Portal alterado", bookmark3.getDescription());
 	}
 }

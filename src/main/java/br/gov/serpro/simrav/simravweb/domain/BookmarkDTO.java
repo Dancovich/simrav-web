@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Bookmark implements Serializable {
+public class BookmarkDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -27,11 +27,11 @@ public class Bookmark implements Serializable {
 	@Column
 	private String link;
 	
-	public Bookmark() {
+	public BookmarkDTO() {
 		super();
 	}
 	
-	public Bookmark(String description, String link) {
+	public BookmarkDTO(String description, String link) {
 		this.description = description;
 		this.link = link;
 	}

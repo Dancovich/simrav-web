@@ -10,12 +10,18 @@ import javax.inject.Inject;
 import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import br.gov.serpro.simrav.simravweb.business.EntradaBC;
 import br.gov.serpro.simrav.simravweb.domain.EntradaDTO;
+import br.gov.serpro.simrav.simravweb.domain.mensageria.FilaDTO;
+import br.gov.serpro.simrav.simravweb.domain.mensageria.ServidorJMSDTO;
+import br.gov.serpro.simrav.simravweb.persistence.mensageria.MensageriaDAO;
 
 @ViewController
 public class EntradaListMB {
 	
 	@Inject
 	private EntradaBC entradaBC;
+	
+	@Inject
+	private MensageriaDAO mensageria;
 	
 	private List<EntradaDTO> listaEntradas;
 	
@@ -25,6 +31,13 @@ public class EntradaListMB {
 	
 	public String filtrarEntradas(){
 		this.listaEntradas = entradaBC.lerEntradaPorPeriodo(dataInicioFiltro, dataFimFiltro);
+		
+		//TESTE!!!!!!!!!!!!
+		ServidorJMSDTO dto = mensageria.pesquisarFilasJMS();
+		for (FilaDTO fila : dto.getFilas()){
+			System.out.println(fila.getName());
+		}
+		
 		return null;
 	}
 	
